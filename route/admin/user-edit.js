@@ -1,5 +1,7 @@
 const {User}=require('../../model/user');
 module.exports= async (req,res)=>{
+    //标识 标识当前访问的是用户管理页面
+    req.app.locals.currentLink='user';
  //获取到地址栏的id参数
  const { message,id}= req.query;
  //如果当前传了id，说明是修改成操作

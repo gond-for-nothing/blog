@@ -6,6 +6,8 @@ const path=require('path');
 const session=require('express-session')
 //导入body-parser模块(加密密码)
 const bodyPaser=require('body-parser');
+//导入formidable模块
+const formidable=require('formidable');
 //连接数据库
 require('./model/connect');
 
@@ -13,7 +15,7 @@ require('./model/connect');
 
 //创建网站服务器
 const app =express();
-//处理post请求参数
+//处理post请求参数(普通数据，二进制数据不可以)
 app.use(express.json()) ;
 app.use(express.urlencoded({ extended: false }))
 //配置session

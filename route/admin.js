@@ -27,6 +27,14 @@ admin.get('user-edit',require('./admin/user-edit'));
 //创建实现用户添加功能路由
 admin.post('/user-edit',require('./admin/user-edit-fn'));
 //创建实现用户修改的路由
-admin.post('/user-modify',require('./admin/user-modify'))
+admin.post('/user-modify',require('./admin/user-modify'));
+//创建用户删除功能路由
+admin.get('/delete',require('./admin/delete'));
+//文章列表页面路由
+admin.get('/article',require('./admin/article'));
+//文章编辑路由
+admin.get('/article-edit',require('./admin/article-edit'));
+//实现文章添加功能的路由
+admin.post('/article-add',require('./admin/article-add'));
 //将路由对象作为模块成员进行导出
 module.exports=admin;
