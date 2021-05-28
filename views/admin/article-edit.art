@@ -26,18 +26,19 @@
                 </div>
                 <div class="form-group">
                     <label>作者</label>
-                    <input name="author" type="text" class="form-control" readonly>
+                    <input name="author" type="text" class="form-control" readonly value="{{@userInfo._id}}">
                 </div>
                 <div class="form-group">
                     <label>发布时间</label>
                     <input name="publishDate" type="date" class="form-control">
                 </div>
-                
+                // multiple 允许用户一次性选择多个文件
                 <div class="form-group">
                    <label for="exampleInputFile">文章封面</label>
-                   <input name="cover" type="file">
+                    
+                   <input name="cover" type="file" id="file">
                    <div class="thumbnail-waper">
-                       <img class="img-thumbnail" src="">
+                       <img class="img-tihumbnail" src="" id="preview">
                    </div>
                 </div>
                 <div class="form-group">
@@ -70,6 +71,25 @@
 
         // 获取数据
         // const editorData = editor.getData();
+        //选择文件上传控件
+        var file =document.querySelector('#file');
+        var preview=document.querySelector('#preview')
+        //用户选择完文件以后
+        file.onchange=function(){
+            //1.创建文件读取对象
+            var reader= new FileReader();
+            //用户选择的文件列表
+            // console.log(this.files[0])
+            //2.读取文件
+            reader.readAsDataURL(this.files[0]);
+            //监听onload事件
+            reader.onload=function (){
+                // console.log(reader.result)
+                //将文件读取的结果显示在页面上
+                preview.src=reader.result;
+
+            }
+        }
     </script>
     {{/block}}
 
